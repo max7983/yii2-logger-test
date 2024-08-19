@@ -7,6 +7,9 @@ use yii\web\Controller;
 
 class LoggerController extends Controller
 {
+    /**
+     * Sends a log message to the default logger.
+     */
     public function actionLog()
     {
         $message = bin2hex(random_bytes(32));
@@ -16,6 +19,11 @@ class LoggerController extends Controller
         return "Sent via {$type}: {$message}";
     }
 
+    /**
+     * Sends a log message to a special logger.
+     *
+     * @param string $type
+     */
     public function actionLogTo(string $type)
     {
         $message = bin2hex(random_bytes(32));
@@ -24,6 +32,9 @@ class LoggerController extends Controller
         return "Sent via {$type}: {$message}";
     }
 
+    /**
+     * Sends a log message to all loggers.
+     */
     public function actionLogToAll()
     {
         $message = bin2hex(random_bytes(32));
