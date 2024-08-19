@@ -46,6 +46,28 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
+            ],
+        ],
+        /* Custom Logger */
+        'logger' => [
+            'class' => \app\components\Logger::class,
+            'loggerType' => 'email',
+            'availableTypes' => [
+                'file' => [
+                    'class' => 'app\components\targets\FileTarget',
+                    'path' => '@runtime/logs',
+                ],
+                'database' => [
+                    'class' => 'app\components\targets\DatabaseTarget',
+                    'table' => 'logs',
+                ],
+                'email' => [
+                    'class' => 'app\components\targets\EmailTarget',
+                    'from' => $params['senderEmail'],
+                    'to'   => $params['adminEmail'],
+                    'subject' => 'Your log message!'
+                ],
             ],
         ],
     ],
