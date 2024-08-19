@@ -28,7 +28,7 @@ class Logger extends Component implements LoggerInterface
 
     public function setType(string $type): void
     {
-        if (!isset($this->loggerInstances[$type])) {
+        if (!isset($this->availableTypes[$type])) {
             throw new \InvalidArgumentException("Unsupported log type: {$type}");
         }
 
